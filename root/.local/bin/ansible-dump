@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+OUTPUT=~/c/a/adump
+export ANSIBLE_DEVEL_WARNING=0
+mkdir -p $OUTPUT
+ansible-doc -l --json | \
+    jq 'keys|.[]' | \
+    xargs -L1 -P 4 -I'{}' bash -c "ansible-doc -j {} >$OUTPUT/{}.json"

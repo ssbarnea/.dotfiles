@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# that for OS 10.9 (still needed the 10.7 one)
+dscacheutil -flushcache
+
+# that's for OS X 10.7+
+sudo killall -HUP mDNSResponder
+
+say cache flushed &

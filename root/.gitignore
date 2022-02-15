@@ -1,0 +1,52 @@
+# Compiled Python files
+# *.pyc
+# *.swp
+# .pytest_cache
+# *.egg-info
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+.coverage*
+
+# WIP files
+.wip*
+.envrc
+.idea/*
+
+#jenkins_jobs.ini
+
+.vscode
+/iterm2/com.googlecode.iterm2.xml
+/iterm2/com.googlecode.iterm2.json
+#/Library
+/Downloads
+/Desktop
+.Trash
+.bash_history
+AUTHORS
+ChangeLog
+
+.vagrant
+
+report.html
+
+
+.mypy_cache
+
+
+ztest*.*
+
+# log files
+*.log
+*.lock
+*.db
