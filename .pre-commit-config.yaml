@@ -5,6 +5,10 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
+        exclude: >
+          (?x)^(
+            root/Library/Application\ Support/JetBrains/.*
+          )$
       - id: mixed-line-ending
       - id: check-byte-order-marker
       - id: check-executables-have-shebangs
