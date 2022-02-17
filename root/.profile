@@ -104,7 +104,7 @@ alias git-get-tags='git tag -l | xargs git tag -d && git fetch --tags'
 alias pep8="pycodestyle"
 alias zbench="env ZSH_PROF= zsh -ic zprof"
 
-alias pco="pytest --collect-only --continue-on-collection-errors --no-cov-on-fail"
+alias pco="pytest -p no:pytest_cov --collect-only"
 alias pcau="pre-commit autoupdate"
 alias pc="pre-commit run -a"
 
