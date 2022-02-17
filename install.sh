@@ -1,7 +1,5 @@
 #!/bin/bash
 set -ex
 
-stow root
-stow hush
+stow -v root hush
 
-more
