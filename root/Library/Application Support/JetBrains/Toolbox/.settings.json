@@ -1,0 +1,8 @@
+{
+    "shell_scripts": {
+        "enabled": true
+    },
+    "tools": {
+        "update_all_automatically": true
+    }
+}

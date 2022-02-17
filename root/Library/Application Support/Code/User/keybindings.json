@@ -1,0 +1,126 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+            "key": "f12",
+            "command": "sortLines.sortLinesUnique",
+            "when": "editorTextFocus"
+    },
+    {
+            "key": "f9",
+            "command": "-sortLines.sortLines",
+            "when": "editorTextFocus"
+    },
+    {
+            "key": "down",
+            "command": "search.history.showNextExcludePattern",
+            "when": "patternExcludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+down",
+            "command": "-search.history.showNextExcludePattern",
+            "when": "patternExcludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "down",
+            "command": "search.history.showNextIncludePattern",
+            "when": "patternIncludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+down",
+            "command": "-search.history.showNextIncludePattern",
+            "when": "patternIncludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+        "key": "alt+down",
+            "command": "search.history.showNext",
+            "when": "searchInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+down",
+            "command": "-search.history.showNext",
+            "when": "searchInputBoxFocus && searchViewletVisible"
+    },
+{
+            "key": "alt+up",
+            "command": "-find.history.showPrevious",
+            "when": "editorFocus && findInputFocussed && findWidgetVisible"
+    },
+    {
+            "key": "up",
+            "command": "workbench.action.terminal.findWidget.history.showPrevious",
+            "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible"
+    },
+    {
+            "key": "alt+up",
+            "command": "-workbench.action.terminal.findWidget.history.showPrevious",
+            "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible"
+    },
+    {
+            "key": "up",
+            "command": "search.history.showPreviousExcludePattern",
+            "when": "patternExcludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+up",
+            "command": "-search.history.showPreviousExcludePattern",
+            "when": "patternExcludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "up",
+            "command": "search.history.showPreviousIncludePattern",
+            "when": "patternIncludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+up",
+            "command": "-search.history.showPreviousIncludePattern",
+            "when": "patternIncludesInputBoxFocus && searchViewletVisible"
+    },
+    {
+        "key": "alt+up",
+            "command": "search.history.showPrevious",
+            "when": "searchInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "alt+up",
+            "command": "-search.history.showPrevious",
+            "when": "searchInputBoxFocus && searchViewletVisible"
+    },
+    {
+            "key": "down",
+            "command": "-find.history.showNext",
+            "when": "editorFocus && findInputFocussed && findWidgetVisible"
+    },
+    {
+            "key": "alt+down",
+            "command": "-find.history.showNext",
+            "when": "editorFocus && findInputFocussed && findWidgetVisible"
+    },
+    {
+            "key": "down",
+            "command": "workbench.action.terminal.findWidget.history.showNext",
+            "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible"
+    },
+    {
+            "key": "alt+down",
+            "command": "-workbench.action.terminal.findWidget.history.showNext",
+            "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible"
+},
+{
+        "key": "alt+right",
+        "command": "workbench.action.navigateForward"
+},
+{
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward"
+},
+{
+        "key": "alt+left",
+        "command": "workbench.action.navigateBack"
+},
+{
+        "key": "ctrl+-",
+        "command": "-workbench.action.navigateBack"
+}
+]
+
+// Empty
