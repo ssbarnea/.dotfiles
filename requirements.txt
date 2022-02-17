@@ -2,12 +2,12 @@ black
 flake8
 flaky
 pip
-pipx
 pip-tools
+pipx
 pre-commit
 pylint
 pytest
 pytest-cov
 pytest-xdist
-tox>=4.0.0b1
 tox-extra
+tox>=4.0.0b1
