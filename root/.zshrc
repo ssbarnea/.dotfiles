@@ -15,33 +15,9 @@ export RPROMPT=""
 # zstyle ':completion::complete:git-checkout:*' matcher 'm:{a-z-_}={A-Z_-}' 'r:|=*' 'l:|=* r:|=*'
 # zstyle ':completion::complete:git-checkout:*' matcher 'm:{a-z-_}={A-Z_-}' 'l:|=* r:|=*'
 
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="pygmalion"
-#ZSH_THEME="terminalparty"
-#ZSH_THEME="trapd00r"
-#ZSH_THEME="ys"
-#ZSH_THEME="fino"
-#ZSH_THEME="gnzh"
-#ZSH_THEME="intheloop"
-#ZSH_THEME="re5et"
-#ZSH_THEME="steeef" # no code
-#ZSH_THEME="suvash" # no code
-
-# ZSH_THEME="tjkirch_mod"
 ZSH_THEME="42picky"
-
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-#ZSH_THEME="Spaceship"
 
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=5
@@ -161,9 +137,6 @@ eval "$(pyenv init -)"
 #[[ -s "/Users/ssbarnea/.jenv/bin/jenv-init.sh" ]] && source "/Users/ssbarnea/.jenv/bin/jenv-init.sh" && source "/Users/ssbarnea/.jenv/commands/completion.sh"
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
-
-# opam configuration
-# test -r /Users/ssbarnea/.opam/opam-init/init.zsh && . /Users/ssbarnea/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # this adds ~1s, not ok.
 # eval "$(_MOLECULE_COMPLETE=source_zsh molecule)"

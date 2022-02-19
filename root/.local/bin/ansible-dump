@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-OUTPUT=~/c/a/adump
+OUTPUT=~/ansible-dump.txt
 export ANSIBLE_DEVEL_WARNING=0
 mkdir -p $OUTPUT
 ansible-doc -l --json | \

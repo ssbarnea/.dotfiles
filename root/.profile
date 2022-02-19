@@ -1,4 +1,5 @@
 #!/bin/bash
+# cspell:ignore apsc gcra pcau drmi
 # Please note the .profile is supposed to loaded by all shells (bash, zsh,...) don't use fancy syntax
 # This file should add private environment variables, do not add it to SCM
 # https://github.com/robbyrussell/oh-my-zsh/issues/1282
@@ -28,7 +29,6 @@ export PYTEST_ADDOPTS="--ff -p no:pytest_cov -p no:pytest_xdist"
 # --verbosity=0"
 #"--maxfail=10 -s --color=yes --no-cov --pdb --pdbcls=IPython.terminal.
 export PYTHONIOENCODING='UTF-8'; # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
-#export PYTHONHTTPSVERIFY=0 # needed for jcli to work on macos
 # export PYTHONIOENCODING=utf-8 # see https://stackoverflow.com/a/4027726/99834
 #export PY_COLORS=1
 
@@ -44,7 +44,7 @@ export PRE_COMMIT_ALLOW_NO_CONFIG=1
 # export MOLECULE_CONTAINERS_BACKEND=docker
 # export ANSIBLE_STRATEGY=debug
 
-# RMUX/RTUX:
+# RMUX, RTOX:
 # export HOSTS="cloud-user@n0"
 export HOSTS="ssbarnea@leno"
 # export HOSTS="ssbarnea@leno"
@@ -89,14 +89,14 @@ export XZ_DEFAULTS='-T 0'
 if [[ $- == *i* ]]; then
     stty discard undef
 fi
-# adding PATHs to the begining of the PATH
+# adding PATHs to the beginning of the PATH
 # "${HOME}/dev/jira/jira-libs.hg/sdk/apache-maven/bin"
 # KEEP ~/bin the last one so it will be the first one to look into, that's essential
 
 MANPATH="/usr/local/opt/make/libexec/gnuman:$MANPATH"
 export MANPATH
 
-# adding PATHs to the begining of the PATH
+# adding PATHs to the beginning of the PATH
 # "${HOME}/dev/jira/jira-libs.hg/sdk/apache-maven/bin"
 # KEEP ~/bin the last one so it will be the first one to look into, that's essential
 for MYPATH in \
@@ -115,14 +115,12 @@ do
 done
 unset MYPATH
 
-
+# rpmbuild:
+# cspell:disable-next-line
 export QA_RPATHS=$(( 0x0001|0x0010 ))
 
 # https://github.com/direnv/direnv/issues/23
 export DIRENV_ALLOW=$HOME
-
-# workaround for the infamous "Binary file (standard input) matches" message when trying to grep on some files.
-alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 
 alias cat='bat -p --pager=never'
 alias cloc="pygount --format=summary"
@@ -158,7 +156,7 @@ alias gcra="git commit --amend --author='\$\(git config --global user.name\) <\$
 alias grd="git-review -D"
 alias grr="git stash save --include-untracked && git review && git stash pop"
 alias gp="git push --force-with-lease"
-alias gwho="git shortlog -s -n | head -n10"
+alias git-who="git shortlog -s -n | head -n10"
 
 unalias gr 2>/dev/null
 alias gr="git review"
@@ -181,10 +179,6 @@ fi
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 alias pyclean="find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete"
-
-alias mvnvu='mvn versions:display-plugin-updates'
-# used to build jenkins plugins and skip the very expensive testing
-alias mvni='mvn install -DskipTests=true'
 
 alias ncdu='ncdu --color=dark -xq'
 
@@ -233,12 +227,13 @@ function readlink {
 export readlink
 
 # http://stackoverflow.com/questions/71069/can-maven-be-made-less-verbose
+# cspell:disable-next-line
 export MAVEN_OPTS="-Dorg.slf4j.simpleLogger.log.org.apache.maven.cl‌​i.transfer.Slf4jMave‌​nTransferListener=wa‌​rn"
 
 #echo "INFO: os=$OS login took $(($SECONDS - $START_TIME))s"
 
 function start_agent {
-    echo "INFO: Initialising new SSH agent..."
+    echo "INFO: Initializing new SSH agent..."
     #/usr/bin/ssh-agent | sed 's/^echo/#echo/' > "$SSH_AGENT_CONFIG"
     /usr/bin/ssh-agent > "$SSH_AGENT_CONFIG"
     #echo succeeded
@@ -362,19 +357,6 @@ function sea {
 # NEVER, EVER, USE export on CDPATH -- see https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
 export CDPATH=.:~/c:~/c/os:~/c/a:~
 
-rgr () {
-    if [ $# -lt 2 ]; then
-        echo "rg with interactive text replacement"
-        echo "Usage: rgr text replacement-text"
-        return
-    fi
-    vim --clean -c ":execute ':argdo %s%$1%$2%gc | \
-        update' | :q" -- $(rg $1 -l ${@:3})
-}
-
-# load other config files
-# shellcheck source=/dev/null
-#source ~/.config/envcache.sh
 # shellcheck source=/dev/null
 source ~/.config/secrets.sh
 echo "done .profile"
