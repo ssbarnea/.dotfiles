@@ -47,7 +47,6 @@ do
 done
 unset MYPATH
 
-export GOPATH=$HOME/go/
 
 export QA_RPATHS=$(( 0x0001|0x0010 ))
 
@@ -82,7 +81,6 @@ alias ap="ansible-playbook"
 alias asc="asciinema"
 alias ls="/usr/local/bin/gls --color -h --group-directories-first"
 alias lg='lazygit'
-alias cookiecutter-py="cookiecutter https://git.openstack.org/openstack-dev/cookiecutter.git"
 
 # https://github.com/cli/cli/issues/2300#issuecomment-991871579
 alias gh-pr-reset="git config --local --get-regexp '\.gh-resolved$' | cut -f1 -d' ' | xargs -L1 git config --unset"
@@ -98,7 +96,6 @@ unalias gr 2>/dev/null
 alias gr="git review"
 
 alias gt='fork -C $(git rev-parse --show-toplevel) #'
-alias dqs='/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh' # Open Docker Terminal
 alias git-get-tags='git tag -l | xargs git tag -d && git fetch --tags'
 #alias jjb="jenkins-jobs"
 alias pep8="pycodestyle"
@@ -123,14 +120,9 @@ alias mvni='mvn install -DskipTests=true'
 alias ncdu='ncdu --color=dark -xq'
 
 alias rsync='/usr/local/bin/rsync'
-alias jenkins-build='pushd ~/os/j/jenkins && mvn install -DskipTests=true'
-alias jenkins-test='pushd ~/os/j/jenkins && mvn install -DskipTests=true'
-alias jenkins-run='pushd ~/os/j/jenkins && mvn install -DskipTests=true && (echo "sleep 15; open http://localhost:8080/" | at now) && java -jar war/target/jenkins.war'
 
 
-# alias tox='python3.8 -m tox'
 
-# we want to be able to search in dotfiles
 # see http://ptspts.blogspot.co.uk/2010/01/how-to-make-midnight-commander-exit-to.html
 if [ -f /usr/local/libexec/mc/mc-wrapper.sh ]; then
     alias mc=". /usr/local/libexec/mc/mc-wrapper.sh"
