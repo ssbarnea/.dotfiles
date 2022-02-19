@@ -2,19 +2,87 @@
 # Please note the .profile is supposed to loaded by all shells (bash, zsh,...) don't use fancy syntax
 # This file should add private environment variables, do not add it to SCM
 # https://github.com/robbyrussell/oh-my-zsh/issues/1282
+# Prefer US English and use UTF-8.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+
 # Measures to avoid cluttering home directory
 export CCACHE_DIR=$HOME/.cache/ccache
-export LESSHISTFILE=$HOME/.cache/.lesshst
+export GILT_CACHE_DIRECTORY=$HOME/.cache/gilt
 export GOPATH=$HOME/.cache/go
+export LESSHISTFILE=$HOME/.cache/.lesshst
+export MYPY_CACHE_DIR=$HOME/.cache/mypy
+export PYLINTHOME=$HOME/.cache/.pylint.d
+export PYTHONPYCACHEPREFIX="$HOME/.cache/cpython/"
 
+# === PYTHON ===
 # export PYTHONSTARTUP=~/.local/bin/pythonstartup.py
 export PYTHONBREAKPOINT=ipdb.set_trace
-export PYTHONDONTWRITEBYTECODE=1
-export PYLINTHOME=$HOME/.cache/.pylint.d
-export MYPY_CACHE_DIR=$HOME/.cache/mypy
+# export PYTHONDONTWRITEBYTECODE=1
+export PY_COLORS=1
+export PYTEST_ADDOPTS="--ff -p no:pytest_cov -p no:pytest_xdist"
+# --verbosity=0"
+#"--maxfail=10 -s --color=yes --no-cov --pdb --pdbcls=IPython.terminal.
+export PYTHONIOENCODING='UTF-8'; # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+#export PYTHONHTTPSVERIFY=0 # needed for jcli to work on macos
+# export PYTHONIOENCODING=utf-8 # see https://stackoverflow.com/a/4027726/99834
+#export PY_COLORS=1
+
+export OPEN_SOURCE_CONTRIBUTOR=true
+
+export PRE_COMMIT_COLOR=always
+export PRE_COMMIT_ALLOW_NO_CONFIG=1
+# export LOG_CONFIG=
+
+# export MOLECULE_PARALLEL=1
+# export MOLECULE_DESTROY=never
+# export MOLECULE_NO_LOG=0
+# export MOLECULE_CONTAINERS_BACKEND=docker
+# export ANSIBLE_STRATEGY=debug
+
+# RMUX/RTUX:
+# export HOSTS="cloud-user@n0"
+export HOSTS="ssbarnea@leno"
+# export HOSTS="ssbarnea@leno"
+# export HOSTS="root@n0"
+export RMUX_REMOTE_DIR="rmux"
+
+# Configure default editor and diff tool
+export EDITOR="edit"
+export VISUAL="$EDITOR"
+export DIFFTOOL=bcomp
+
+# tmux:
+export DISABLE_AUTO_TITLE="true"
+
+export NETRC=~/.netrc
+
+# Enable persistent REPL history for `node`.
+export NODE_REPL_HISTORY=~/.node_history;
+# Allow 32³ entries; the default is 1000.
+export NODE_REPL_HISTORY_SIZE='32768';
+# Use sloppy mode by default, matching web browsers.
+export NODE_REPL_MODE='sloppy';
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow:-}";
+
+# Don't clear the screen after quitting a manual page.
+export MANPAGER='less -X'
+
+# Configure xz to use all CPU cores
+export XZ_DEFAULTS='-T 0'
+
 #set -x
 
 # fix for ctrl-o https://apple.stackexchange.com/questions/3253/ctrl-o-behavior-in-terminal-app
@@ -104,11 +172,12 @@ alias zbench="env ZSH_PROF= zsh -ic zprof"
 alias pco="pytest -p no:pytest_cov --collect-only"
 alias pcau="pre-commit autoupdate"
 alias pc="pre-commit run -a"
-
-test pc="-f .pre-commit-config.yaml && pre-commit run -a || tox -e linters"
+# test pc="-f .pre-commit-config.yaml && pre-commit run -a || tox -e linters"
 
 # http://klimer.eu/2015/05/01/use-midnight-commander-like-a-pro/
-alias mc=". /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh"
+if [[ -f /usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh ]]; then
+    alias mc='/usr/local/opt/midnight-commander/libexec/mc/mc-wrapper.sh'
+fi
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 alias pyclean="find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete"
@@ -119,9 +188,9 @@ alias mvni='mvn install -DskipTests=true'
 
 alias ncdu='ncdu --color=dark -xq'
 
-alias rsync='/usr/local/bin/rsync'
-
-
+if [[ -f /usr/local/bin/rsync ]]; then
+    alias rsync='/usr/local/bin/rsync'
+fi
 
 # see http://ptspts.blogspot.co.uk/2010/01/how-to-make-midnight-commander-exit-to.html
 if [ -f /usr/local/libexec/mc/mc-wrapper.sh ]; then
@@ -129,7 +198,7 @@ if [ -f /usr/local/libexec/mc/mc-wrapper.sh ]; then
 fi
 alias waf='$PWD/waf'
 
-# getting current script directory in a cross-platform compatibe way by resolving symlinks
+# getting current script directory in a cross-platform compatible way by resolving symlinks
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
 if [ "$SHELL" = "/bin/bash" ]; then
     SOURCE="${BASH_SOURCE[0]}"
@@ -163,31 +232,10 @@ function readlink {
 }
 export readlink
 
-
-# OS=$(lowercase "`uname`")
-# KERNEL=`uname -r`
-# MACH=`uname -m`
-# export OS
-# export KERNEL
-# export MACH
-
-
-
 # http://stackoverflow.com/questions/71069/can-maven-be-made-less-verbose
 export MAVEN_OPTS="-Dorg.slf4j.simpleLogger.log.org.apache.maven.cl‌​i.transfer.Slf4jMave‌​nTransferListener=wa‌​rn"
-# --- END COMPILATION ---
 
 #echo "INFO: os=$OS login took $(($SECONDS - $START_TIME))s"
-
-# === load ssh keys if they are not already loaded ==
-#SSH_AGENT_CONFIG="$HOME/.ssh/.agent-$(uname)"
-#
-#if [ -f "$SSH_AGENT_CONFIG" ]; then
-#    # shellcheck source=/dev/null
-#    source "$SSH_AGENT_CONFIG"
-#fi
-
-
 
 function start_agent {
     echo "INFO: Initialising new SSH agent..."
@@ -219,10 +267,6 @@ ssh-add -l >/dev/null || APPLE_SSH_ADD_BEHAVIOR=1 ssh-add -A
 # if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 #     source /usr/local/bin/virtualenvwrapper.sh
 # fi
-
-#if [ -f ~/.venv/rh/bin/activate ]; then
-#    source ~/.venv/rh/bin/activate
-#fi
 
 # function style_term() {
 # # this would colorize tab of the iTerm2 based on the hostname
@@ -271,14 +315,8 @@ function ssh2 {
     fi
 }
 
-function fingerprin {
-    pubkeypath="$1"
-    ssh-keygen -E md5 -lf "$pubkeypath" | awk '{ print $2 }' | cut -c 5-
-}
-
 # export NVM_DIR="$HOME/.nvm"
 # . "/usr/local/opt/nvm/nvm.sh" --no-use
-
 
 # https://gist.githubusercontent.com/scarolan/f93a8f9b362c4d3a4436/raw/04aa224a9ab54d16f0f65448f6e38e697006aaaa/gistfile1.sh
 function set_iterm_title {
@@ -319,32 +357,7 @@ function precmd {
 function sea {
     $* 2>&1 | seashells
 }
-export NETRC=~/.netrc
 
-#export JJB_CONF=$HOME/.config/jenkins_jobs/jenkins_jobs.ini
-#export JJB_LOG_LEVEL=info
-#export JJB_LOG_LEVEL=debug
-#export JENKINS_URL=https://rhos-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com
-
-#export PYTHONHTTPSVERIFY=0 # needed for jcli to work on macos
-# export PYTHONIOENCODING=utf-8 # see https://stackoverflow.com/a/4027726/99834
-#export PY_COLORS=1
-#export PYTEST_ADDOPTS="--color=yes"
-
-#export TWINE_REPOSITORY=pypi # see https://github.com/pypa/twine
-#export PIP_DEFAULT_TIMEOUT=100
-#export PIP_INSTALL_CONSTRAINT=~/constraints.txt
-
-export XDG_CACHE_HOME=$HOME/.cache
-
-# export PRE_COMMIT_ALLOW_NO_CONFIG=1
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
-
-
-export EDITOR="edit"
-export VISUAL="$EDITOR"
-export DIFFTOOL=bcomp
-export DISABLE_AUTO_TITLE="true"
 
 # NEVER, EVER, USE export on CDPATH -- see https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
 export CDPATH=.:~/c:~/c/os:~/c/a:~
