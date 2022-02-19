@@ -1,3 +1,4 @@
 [submodule "hush"]
 	path = hush
 	url = git@github.com:ssbarnea/hush.git
+	branch = main
