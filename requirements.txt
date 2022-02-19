@@ -1,4 +1,5 @@
 black
+build
 flake8
 flaky
 pip
@@ -9,5 +10,7 @@ pylint
 pytest
 pytest-cov
 pytest-xdist
+setuptools-scm
 tox-extra
 tox>=4.0.0b1
+twine
