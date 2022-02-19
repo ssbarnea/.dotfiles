@@ -94,6 +94,7 @@ ncdu
 nocaseglob
 nofollow
 oneline
+paramiko
 pdbcls
 precmd
 precomposeunicode
@@ -127,6 +128,7 @@ textmate
 timestamping
 toplevel
 trustctime
+unalias
 unsetopt
 unversioned
 vimrc
