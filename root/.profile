@@ -109,7 +109,7 @@ for MYPATH in \
     "${HOME}/bin"
 do
     if [[ ! ":$PATH:" == *":$MYPATH:"* ]] && [ -d "$MYPATH" ]; then
-        echo adding $MYPATH
+        echo "adding ${MYPATH}"
         export PATH=${MYPATH}:$PATH
     fi
 done
@@ -222,7 +222,7 @@ lowercase(){
 }
 
 function readlink {
-    greadlink $*
+    greadlink "$@"
 }
 export readlink
 
@@ -350,7 +350,7 @@ function precmd {
 # }
 
 function sea {
-    $* 2>&1 | seashells
+    "$@" 2>&1 | seashells
 }
 
 
