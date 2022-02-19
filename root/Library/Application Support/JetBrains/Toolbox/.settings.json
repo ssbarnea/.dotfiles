@@ -1,8 +1,19 @@
 {
+    "projects": {
+        "/Users/ssbarnea/c/a/ansible-lint": {
+            "favorite": true
+        }
+    },
     "shell_scripts": {
         "enabled": true
     },
+    "statistics": {
+        "allow": true
+    },
     "tools": {
         "update_all_automatically": true
+    },
+    "jetbrains_account": {
+        "active": "946174"
     }
 }
