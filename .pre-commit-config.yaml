@@ -1,5 +1,12 @@
 ---
 repos:
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v5.8.1
+    hooks:
+      - id: cspell
+        # entry: codespell --relative
+        args: ["--relative", "--no-progress", "--no-summary"]
+        name: Spell check with cspell
   - repo: https://github.com/pre-commit/mirrors-prettier
     # keep it before yamllint
     rev: "v2.5.1"

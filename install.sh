@@ -11,7 +11,7 @@ stow -v root hush
 pip install -q -r requirements.txt
 
 # Install npm dependencies
-cat npm.txt | grep -v '^#' | xargs npm install -g
+grep -v '^#' npm.txt  | xargs npm install -g
 
 # Configure background updates if needed
 brew autoupdate status | grep 'and running' >/dev/null || {

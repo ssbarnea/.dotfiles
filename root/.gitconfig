@@ -50,9 +50,11 @@
 	ft = "!f() { git describe --always --contains $1; }; f"
 
 	# Find commits by source code
+	# cspell:disable-next-line
 	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
 	# Find commits by commit message
+	# cspell:disable-next-line
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
 	# Remove branches that have already been merged with master
@@ -284,8 +286,11 @@ refs = p    !sh -c \"git branch -av | sed -n 's|remotes\\/\\([^\\/]*\\).*|\\1|p'
 	helper = !/usr/local/bin/gh auth git-credential
 [secrets]
 	providers = git secrets --aws-provider
+	# cspell:disable-next-line
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
 	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	# cspell:disable-next-line
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+	# spell-check: enable

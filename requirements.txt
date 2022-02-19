@@ -6,6 +6,7 @@ pip
 pip-tools
 pipx
 pre-commit
+pygount
 pylint
 pytest
 pytest-cov
