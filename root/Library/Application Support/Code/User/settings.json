@@ -681,4 +681,5 @@
         "editor.formatOnSave": true,
     },
     "workbench.colorTheme": "One Dark Pro Darker",
+    "coverage-gutters.customizable.context-menu": false,
 }
