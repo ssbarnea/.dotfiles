@@ -1,7 +1,8 @@
+# shellcheck disable=SC2148
 # HISTFILE is used by interactive shells only
-HISTFILE=$HOME/.cache/zsh_history
+export HISTFILE=$HOME/.cache/zsh_history
 # https://apple.stackexchange.com/questions/427561/macos-zsh-sessions-zsh-history-and-setopt-append-history
-SHELL_SESSIONS_DISABLE=1
+export SHELL_SESSIONS_DISABLE=1
 
 if [[ -v ZSH_PROF ]]; then
     zmodload zsh/zprof
@@ -17,9 +18,11 @@ export RPROMPT=""
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+# shellcheck disable=SC2034
 ZSH_THEME="42picky"
 
 # Report CPU usage for commands running longer than 10 seconds
+# shellcheck disable=SC2034
 REPORTTIME=5
 
 # Uncomment the following line to use case-sensitive completion.
@@ -27,10 +30,12 @@ REPORTTIME=5
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
+# shellcheck disable=SC2034
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
+# shellcheck disable=SC2034
 DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -59,6 +64,7 @@ DISABLE_UPDATE_PROMPT=true
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
+# shellcheck disable=SC2034
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -66,6 +72,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # hack to avoid gpg-agent module failure because it fails to find gpg-config
 typeset -U path
+# shellcheck disable=SC2034,SC1087,SC2206
 path=(/usr/local/bin $path[@])
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -74,6 +81,7 @@ path=(/usr/local/bin $path[@])
 # colorize broken on prompts
 # gpg-agent
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# shellcheck disable=SC2034
 plugins=(\
     autopep8 \
     git \
@@ -88,17 +96,20 @@ plugins=(\
 # command-time
 # autoload -U compinit && compinit
 
-source $ZSH/oh-my-zsh.sh
+# shellcheck source=/dev/null
+source "$ZSH/oh-my-zsh.sh"
 
 #setopt auto_cd
 unsetopt correct_all
 
 source_sh () {
     emulate -LR sh
+    # shellcheck source=/dev/null
     . "$@"
 }
 
-source $HOME/.profile
+# shellcheck source=/dev/null
+source "$HOME/.profile"
 
 # enable direnv
 eval "$(direnv hook zsh)"
@@ -118,6 +129,7 @@ eval "$(direnv hook zsh)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 
+# shellcheck source=/dev/null
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #which rbenv >> /dev/null && eval "$(rbenv init -)"
@@ -147,10 +159,12 @@ fpath+=~/.zfunc
 
 # w/o this line shell completions do not work
 compinit -D
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-    .  $HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    # shellcheck source=/dev/null
+    .  "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi # added by Nix installer
 
+# shellcheck disable=SC2034,SC2154
 ZSH_HIGHLIGHT_STYLES[line]='bold'
 
 echo "done .zshrc"

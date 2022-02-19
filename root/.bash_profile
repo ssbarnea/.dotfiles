@@ -5,7 +5,7 @@
 export HISTFILE=$HOME/.cache/bash_history
 
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-    # shellcheck source ./$file
+    # shellcheck source=/dev/null
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -28,8 +28,10 @@ done;
 
 # Add tab completion for many Bash commands
 if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+    # shellcheck source=/dev/null
     source "$(brew --prefix)/share/bash-completion/bash_completion";
 elif [ -f /etc/bash_completion ]; then
+    # shellcheck source=/dev/null
     source /etc/bash_completion;
 fi;
 
@@ -55,8 +57,9 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
 
-if [ -e /Users/ssbarnea/.nix-profile/etc/profile.d/nix.sh ]; then
-    . /Users/ssbarnea/.nix-profile/etc/profile.d/nix.sh; fi
+if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then
+    # shellcheck source=/dev/null
+    . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi
 # added by Nix installer
 
 echo "done .bash_profile"
