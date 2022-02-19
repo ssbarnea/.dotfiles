@@ -1,2 +1,9 @@
 moved
 old
+.pytest_cache
+hush/
+
+# Trick to prevent prettier from editing these generated files:
+root/Library/Application Support/Code/User/keybindings.json
+root/Library/Application Support/Code/User/settings.json
+root/Library/Application Support/JetBrains/Toolbox/.settings.json
