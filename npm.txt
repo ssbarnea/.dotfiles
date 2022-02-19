@@ -1,0 +1,4 @@
+cspell-cli
+npm-check-updates
+prettier
+prettier-plugin-toml
