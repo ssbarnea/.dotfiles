@@ -34,6 +34,11 @@ repos:
       - id: yamllint
         files: \.(yaml|yml)$
 
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.8.0.4
+    hooks:
+      - id: shellcheck
+
   - repo: https://github.com/openstack-dev/bashate.git
     rev: 2.1.0
     hooks:
