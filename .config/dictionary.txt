@@ -29,6 +29,7 @@ RPROMPT
 Sbarnea
 Sorin
 TERMCAP
+TOXENV
 asciinema
 attributesfile
 autocd

@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  create: # is used for publishing to PyPI and TestPyPI
+    tags: # any tag regardless of its name, no branches
+      - "**"
+  push: # only publishes pushes to the main branch to TestPyPI
+    branches: # any integration branch but not tag
+      - "main"
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: >-
+      ${{ matrix.env.TOXENV }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macos
+            os: macos-latest
+    env:
+      FORCE_COLOR: 1
+
+    steps:
+      - name: Check out src from Git
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Run install
+        run: |
+          ./install.sh
