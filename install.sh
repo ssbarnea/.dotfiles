@@ -8,7 +8,7 @@ brew bundle --no-upgrade --no-lock --file Brewfile.min.rb
 stow -v root hush
 
 # Installing python dependencies
-pip3 install -q -r requirements.txt
+pip3 install --user -q -r requirements.txt
 
 # Install npm dependencies
 grep -v '^#' npm.txt  | xargs npm install -g
