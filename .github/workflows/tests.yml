@@ -21,9 +21,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # include:
+        #   - name: macos
+        #     os: macos-latest
         include:
-          - name: macos
-            os: macos-latest
+          - name: fedora
+            os: ubuntu-latest
     env:
       FORCE_COLOR: 1
 
@@ -34,5 +37,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run install
+        container: fedora:latest
         run: |
+          cat /etc/os-release
           ./install.sh
