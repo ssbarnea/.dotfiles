@@ -6,8 +6,6 @@
 *.pickle
 *.qcow2
 *.svg
-_static
-_themes
 .Trash/
 .android/
 .ansible/
@@ -27,6 +25,7 @@ _themes
 .local/lib
 .local/share/virtualenvs/
 .m2/
+.mypy_cache/
 .oh-my-zsh/
 .pip/
 .pre-commit/
@@ -41,6 +40,8 @@ _themes
 .venv
 .virtualenvs/
 .vscode-insiders/
+.vscode-test/
+.vscode/extensions/
 .zcompdump*
 .zsh_history
 Downloads/
@@ -49,6 +50,8 @@ Library/
 Parallels
 Pictures
 VirtualBox VMs/
+_static
+_themes
 bin/node_modules/
 bk/
 dev/os/homebrew-core/
@@ -60,5 +63,3 @@ output/
 redhat/*.orig/
 report.html
 tempest-dir
-.mypy_cache/
-.vscode-test/
