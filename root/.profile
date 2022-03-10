@@ -128,7 +128,7 @@ alias cloc="pygount --format=summary"
 alias rmcache='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 alias e='code -r -a'  # add to current projects
 alias edit='code -r -a'  # add to current projects
-alias tox='tox4'
+alias tox='python -m tox'
 alias gpg='gpg2'
 alias ducks='du -cks * | sort -rn | head'
 alias grep='grep -a --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
