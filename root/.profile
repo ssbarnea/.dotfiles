@@ -11,6 +11,10 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.config}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 
+# Workaround for avoiding potential 30s delays with tox
+# https://github.com/tox-dev/tox/issues/2375
+export HOSTNAME=$(hostname)
+
 # Measures to avoid cluttering home directory
 export CCACHE_DIR=$HOME/.cache/ccache
 export GILT_CACHE_DIRECTORY=$HOME/.cache/gilt
