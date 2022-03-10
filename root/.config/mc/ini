@@ -4,8 +4,8 @@ shell_patterns=true
 auto_save_setup=true
 preallocate_space=false
 auto_menu=false
-use_internal_view=false
-use_internal_edit=false
+use_internal_view=true
+use_internal_edit=true
 clear_before_exec=true
 confirm_delete=true
 confirm_overwrite=true
@@ -83,7 +83,9 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=onedark
+skin=nicedark
+
+shadows=false
 
 [Colors]
 base_color=
