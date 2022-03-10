@@ -63,3 +63,5 @@ if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then
 # added by Nix installer
 
 echo "done .bash_profile"
+
+. "${HOME}/.profile"
