@@ -6,8 +6,10 @@ if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 fi
 
-# Quickly install all brew dependencies from Brewfile
-brew bundle --no-upgrade --no-lock --file Brewfile.min.rb
+if [[ $OSTYPE == 'darwin'* ]]; then
+    # Quickly install all brew dependencies from Brewfile
+    brew bundle --no-upgrade --no-lock --file Brewfile.min.rb
+fi
 
 # Relinking dotfiles
 stow -v root hush
@@ -16,14 +18,18 @@ stow -v root hush
 pip3 install --user -q -r requirements.txt
 
 # Install npm dependencies
-grep -v '^#' npm.txt  | xargs npm install -g
-
-# Configure background updates if needed
-brew autoupdate status | grep 'and running' >/dev/null || {
-    brew autoupdate --upgrade start 86400 --enable-notification
+type npm 2>/dev/null && {
+    grep -v '^#' npm.txt | xargs npm install -g
 }
 
-# Avoid installing the whole brew bundle unless on interactive shell
-if tty -s; then
-    brew bundle --no-upgrade --no-lock
+if [[ $OSTYPE == 'darwin'* ]]; then
+    # Configure background updates if needed
+    brew autoupdate status | grep 'and running' >/dev/null || {
+        brew autoupdate --upgrade start 86400 --enable-notification
+    }
+
+    # Avoid installing the whole brew bundle unless on interactive shell
+    if tty -s; then
+        brew bundle --no-upgrade --no-lock
+    fi
 fi
