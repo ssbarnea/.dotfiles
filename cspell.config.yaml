@@ -9,8 +9,10 @@ dictionaries:
   - words
   - python
 ignorePaths:
+  - Brewfile
+  - root/.config/mc/ini
+  - root/.local/share/mc/skins/onedark16M.ini
   - root/.vimrc
   - root/Library/Application Support/Code/User/settings.json
-  - Brewfile
   - root/Library/Application Support/Code/User/spellright.dict
   - root/Library/Application Support/JetBrains/consentOptions/accepted
