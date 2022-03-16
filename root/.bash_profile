@@ -64,4 +64,5 @@ if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then
 
 echo "done .bash_profile"
 
+# shellcheck disable=SC1091
 . "${HOME}/.profile"

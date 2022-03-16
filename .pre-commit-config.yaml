@@ -19,6 +19,10 @@ repos:
     rev: v1.3.0
     hooks:
       - id: trailing-whitespace
+        exclude: >
+          (?x)^(
+            root/.local/share/mc/skins
+          )$
       - id: end-of-file-fixer
         exclude: >
           (?x)^(

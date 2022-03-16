@@ -13,6 +13,7 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 
 # Workaround for avoiding potential 30s delays with tox
 # https://github.com/tox-dev/tox/issues/2375
+# shellcheck disable=SC2155
 export HOSTNAME=$(hostname)
 
 # Measures to avoid cluttering home directory
@@ -165,7 +166,8 @@ alias git-who="git shortlog -s -n | head -n10"
 unalias gr 2>/dev/null
 alias gr="git review"
 
-alias gt='fork -C $(git rev-parse --show-toplevel) #'
+alias gt='fork'
+# -C ${1:-$(git rev-parse --show-toplevel)}'
 alias git-get-tags='git tag -l | xargs git tag -d && git fetch --tags'
 #alias jjb="jenkins-jobs"
 alias pep8="pycodestyle"
@@ -316,7 +318,8 @@ function ssh2 {
 
 if command -v brew >/dev/null && [[ -d "$HOME/.nvm" ]]; then
     export NVM_DIR="$HOME/.nvm"
-    source $(brew --prefix nvm)/nvm.sh
+    # shellcheck disable=SC1091
+    source "$(brew --prefix nvm)/nvm.sh"
 fi
 
 # https://gist.githubusercontent.com/scarolan/f93a8f9b362c4d3a4436/raw/04aa224a9ab54d16f0f65448f6e38e697006aaaa/gistfile1.sh
