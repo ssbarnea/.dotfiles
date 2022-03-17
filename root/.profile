@@ -127,7 +127,8 @@ export QA_RPATHS=$(( 0x0001|0x0010 ))
 # https://github.com/direnv/direnv/issues/23
 export DIRENV_ALLOW=$HOME
 
-alias cat='bat -p --pager=never'
+type bat >/dev/null && alias cat='bat -p --pager=never'
+
 alias cloc="pygount --format=summary"
 
 alias rmcache='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
