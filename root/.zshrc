@@ -137,8 +137,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 unsetopt AUTO_CD
 
 # https://github.com/pyenv/pyenv#installation
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+type pyenv >> /dev/null && {
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+}
 
 # fi
 # if [[ ! -d $PYENV_ROOT/plugins/pyenv-update ]]; then
