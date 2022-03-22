@@ -151,7 +151,7 @@ alias apsc="ansible-playbook --syntax-check"
 alias al="ansible-lint"
 alias ap="ansible-playbook"
 alias asc="asciinema"
-alias ls="/usr/local/bin/gls --color -h --group-directories-first"
+type gls >> /dev/null && alias ls="/usr/local/bin/gls --color -h --group-directories-first"
 alias lg='lazygit'
 
 # https://github.com/cli/cli/issues/2300#issuecomment-991871579
