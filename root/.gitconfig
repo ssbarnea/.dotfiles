@@ -226,7 +226,7 @@ stashstaged = !git stash --keep-index && \
 	trustExitCode = true
 [commit]
 	template = /Users/ssbarnea/.stCommitMsg
-	gpgsign = false
+	gpgsign = true
 [http]
 	cookiefile = /Users/ssbarnea/.gitcookies
 [filter "lfs"]
