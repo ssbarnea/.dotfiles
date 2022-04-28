@@ -241,11 +241,11 @@ function start_agent {
         . "${SSH_ENV}"
     fi
     #/usr/bin/ssh-add;
-    # -K is essential on mac in order to add the key to the keychain
+    # --apple-use-keychain is essential on mac in order to add the key to the keychain
     # find ~/.ssh -maxdepth 1 -name "*rsa*" \
     #   ! -name "*.pub" \
     #   ! -name '*.ppk' -print0 | \
-    #   xargs -0 /usr/bin/ssh-add -K
+    #   xargs -0 /usr/bin/ssh-add --apple-use-keychain
 }
 
 if [[ ! -e "$SSH_AUTH_SOCK" || $(ssh-add -l | wc -l) -lt 1 ]]; then
@@ -255,7 +255,7 @@ fi
 unset start_agent
 # load default key in the agent
 # "ssh-add -A" loads all keys already stored in KeyChain without password prompt
-ssh-add -l >/dev/null || APPLE_SSH_ADD_BEHAVIOR=1 ssh-add -A
+ssh-add -l >/dev/null || APPLE_SSH_ADD_BEHAVIOR=1 ssh-add --apple-use-keychain --apple-load-keychain
 
 # if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 #     source /usr/local/bin/virtualenvwrapper.sh
