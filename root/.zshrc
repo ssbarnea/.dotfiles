@@ -4,6 +4,9 @@ export HISTFILE=$HOME/.cache/zsh_history
 # https://apple.stackexchange.com/questions/427561/macos-zsh-sessions-zsh-history-and-setopt-append-history
 export SHELL_SESSIONS_DISABLE=1
 
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+
 if [[ -v ZSH_PROF ]]; then
     zmodload zsh/zprof
 fi
@@ -85,12 +88,13 @@ path=(/usr/local/bin $path[@])
 plugins=(\
     autopep8 \
     git \
-    pip \
-    python \
-    pylint \
-    mvn \
-    virtualenv \
     git-extras \
+    mvn \
+    pip \
+    pylint \
+    python \
+    virtualenv \
+    zsh-nvm \
     zsh-syntax-highlighting \
     )
 # command-time

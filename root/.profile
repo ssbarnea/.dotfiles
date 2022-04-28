@@ -317,12 +317,6 @@ function ssh2 {
     fi
 }
 
-if command -v brew >/dev/null && [[ -d "$HOME/.nvm" ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    # shellcheck disable=SC1091
-    source "$(brew --prefix nvm)/nvm.sh"
-fi
-
 # https://gist.githubusercontent.com/scarolan/f93a8f9b362c4d3a4436/raw/04aa224a9ab54d16f0f65448f6e38e697006aaaa/gistfile1.sh
 function set_iterm_title {
     echo -ne "\e]1;$1\a"
