@@ -13,7 +13,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
 fi
 
 # Relinking dotfiles
-stow -v root hush
+stow --ignore=DS_Store -v root hush
 
 # Installing python dependencies
 pip3 install --user -q -r requirements.txt
