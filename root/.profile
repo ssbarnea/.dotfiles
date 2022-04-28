@@ -151,7 +151,8 @@ alias apsc="ansible-playbook --syntax-check"
 alias al="ansible-lint"
 alias ap="ansible-playbook"
 alias asc="asciinema"
-type gls >> /dev/null && alias ls="/usr/local/bin/gls --color -h --group-directories-first"
+# keep in mind that brew location is different on Apple Silicon
+type gls >> /dev/null && alias ls="gls --color -h --group-directories-first"
 alias lg='lazygit'
 
 # https://github.com/cli/cli/issues/2300#issuecomment-991871579
@@ -188,16 +189,6 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 alias pyclean="find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete"
 
 alias ncdu='ncdu --color=dark -xq'
-
-if [[ -f /usr/local/bin/rsync ]]; then
-    alias rsync='/usr/local/bin/rsync'
-fi
-
-# see http://ptspts.blogspot.co.uk/2010/01/how-to-make-midnight-commander-exit-to.html
-if [ -f /usr/local/libexec/mc/mc-wrapper.sh ]; then
-    alias mc=". /usr/local/libexec/mc/mc-wrapper.sh"
-fi
-alias waf='$PWD/waf'
 
 # getting current script directory in a cross-platform compatible way by resolving symlinks
 # http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
