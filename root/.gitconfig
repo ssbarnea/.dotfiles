@@ -294,3 +294,6 @@ refs = p    !sh -c \"git branch -av | sed -n 's|remotes\\/\\([^\\/]*\\).*|\\1|p'
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	# spell-check: enable
+[credential "https://gitlab.cee.redhat.com"]
+	helper =
+	helper = !/opt/homebrew/bin/glab auth git-credential
