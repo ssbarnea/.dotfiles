@@ -7,6 +7,12 @@ export SHELL_SESSIONS_DISABLE=1
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
+
+# Disable glob expansion when there are no matches, so commands like below will just work
+# pip install foo[bar]
+# pytest -k foo[bar]
+unsetopt nomatch
+
 if [[ -v ZSH_PROF ]]; then
     zmodload zsh/zprof
 fi
