@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v5.9.0
+    rev: v8.15.2
     hooks:
       - id: cspell
         # entry: codespell --relative
@@ -9,7 +9,7 @@ repos:
         name: Spell check with cspell
   - repo: https://github.com/pre-commit/mirrors-prettier
     # keep it before yamllint
-    rev: "v2.5.1"
+    rev: "v4.0.0-alpha.8"
     hooks:
       - id: prettier
         additional_dependencies:
@@ -40,18 +40,18 @@ repos:
       - id: check-yaml
         files: .*\.(yaml|yml)$
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.3
+    rev: v1.35.1
     hooks:
       - id: yamllint
         files: \.(yaml|yml)$
 
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.8.0.4
+    rev: v0.10.0.1
     hooks:
       - id: shellcheck
 
   - repo: https://github.com/openstack-dev/bashate.git
-    rev: 2.1.0
+    rev: 2.1.1
     hooks:
       - id: bashate
         args: ["-i", "E006"]
